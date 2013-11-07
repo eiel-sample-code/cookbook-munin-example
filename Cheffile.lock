@@ -1,0 +1,10 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    htpasswd (0.0.3)
+    yum (2.4.2)
+
+DEPENDENCIES
+  htpasswd (>= 0)
+  yum (>= 0)
+
