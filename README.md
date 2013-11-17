@@ -50,7 +50,7 @@ Gem でインストールできるものはバージョンがかなり古く、�
 本リポジトリをクローンしてカレントディレクトリを変更します。
 
 ```
-git clonee git@github.com:eie/cookbook-munin-example
+git clone git@github.com:eie/cookbook-munin-example
 cd cookbook-munin-example
 ```
 
