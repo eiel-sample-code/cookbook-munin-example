@@ -60,6 +60,7 @@ cd cookbook-munin-example
 依存している cookbook を取得します。
 
 ```
+gem install librarian-chef
 librarian-chef install
 ```
 
