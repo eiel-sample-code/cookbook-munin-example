@@ -41,6 +41,10 @@ Gem でインストールできるものはバージョンがかなり古く、�
 
 ## [vagrant-omnibus](https://github.com/schisamo/vagrant-omnibus) をインストールする
 
+```
+vagrant plugin install vagrant-omnibus
+```
+
 `vagrant up` した際に chef-solo のインストールをしてくれます。
 ローカルでテストする際には knife-solo を使いたくないのでこうしています。
 
@@ -60,6 +64,7 @@ cd cookbook-munin-example
 依存している cookbook を取得します。
 
 ```
+gem install librarian-chef
 librarian-chef install
 ```
 
