@@ -24,9 +24,10 @@ vagrant, VirtualBox を使用します。
 ## chef をインストールする
 
 rubygems でインストールできます。
+Gemfile 用意しているので bundle install すれば OK です。
 
 ```
-gem install chef
+bundle install
 ```
 
 ## Virtual Box をインストールする
@@ -64,8 +65,7 @@ cd cookbook-munin-example
 依存している cookbook を取得します。
 
 ```
-gem install librarian-chef
-librarian-chef install
+bundle exec librarian-chef install
 ```
 
 
@@ -111,7 +111,7 @@ knife-solo を使います。
 ## knife-solo のインストール
 
 ```
-gem install knife-solo chef librarian-chef
+bundle install
 ```
 
 ## ssh できるようにする
@@ -125,7 +125,7 @@ gem install knife-solo chef librarian-chef
 knife solo prepare を使うと簡単できます。
 
 ```
-knife solo prepare test.korinkan.co.jp
+bundle exec knife solo prepare test.korinkan.co.jp
 ```
 
 ## リモートサーバに対し実行したいレシピを指定する
