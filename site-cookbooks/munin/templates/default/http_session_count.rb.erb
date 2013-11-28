@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'munin'
+
+class HttpSessionCount < Munin::Plugin
+  graph_attributes "HTTP Session Count", {
+    :category => 'Servlet',
+    :info => 'This graph shows the HTTP Session Count',
+  }
+  declare_field :number, {
+    :label => 'number',
+    :type => :gauge,
+    :min => 0,
+  }
+
+  def initialize(config, argv, url)
+    super config
+    @progarmnmae = argv[0]
+    @url = url
+  end
+
+  def retrieve_values
+    require "open-uri"
+    content = open(@url).read
+    %r"Total Count : (\d+)" =~ content or
+      die("bad content: #{content.inspect}")
+    { :number => $i.to_i }
+  end
+
+  def log(what)
+    STDERR.puts("(#{@progname}) #{what}")
+  end
+
+ def die(reason)
+    log("!ERROR! #{reason}")
+    abort
+  end
+end
+
+url = '<%= node['session_count_url'] %>'
+HttpSessionCount.new({}, ARGV, url).run

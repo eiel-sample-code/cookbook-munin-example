@@ -16,6 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["cookbooks", "site-cookbooks"]
     chef.add_recipe "munin"
+    chef.add_recipe "munin::http_session_count"
   end
 
   # The url from where the 'config.vm.box' box will be fetched if it
