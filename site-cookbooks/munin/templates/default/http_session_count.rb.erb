@@ -22,9 +22,9 @@ class HttpSessionCount < Munin::Plugin
   def retrieve_values
     require "open-uri"
     content = open(@url).read
-    %r"Total Count : (\d+)" =~ content or
+    match = %r"Total Count : (\d+)".match(content) or
       die("bad content: #{content.inspect}")
-    { :number => $i.to_i }
+    { :number => match[1] }
   end
 
   def log(what)
