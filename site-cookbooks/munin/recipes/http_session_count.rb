@@ -15,6 +15,10 @@ package "rubygems" do
   action :install
 end
 
+package 'ruby-json' do
+  action :install
+end
+
 gem_package "munin"
 
 template 'http_session_count' do

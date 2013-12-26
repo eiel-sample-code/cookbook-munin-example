@@ -7,8 +7,8 @@ class HttpSessionCount < Munin::Plugin
     :category => 'Servlet',
     :info => 'This graph shows the HTTP Session Count',
   }
-  declare_field :number, {
-    :label => 'number',
+  declare_field :TotalCount, {
+    :label => 'total',
     :type => :gauge,
     :min => 0,
   }
@@ -22,9 +22,8 @@ class HttpSessionCount < Munin::Plugin
   def retrieve_values
     require "open-uri"
     content = open(@url).read
-    match = %r"Total Count : (\d+)".match(content) or
-      die("bad content: #{content.inspect}")
-    { :number => match[1] }
+    require 'json'
+    JSON.parse(content).symbolize_keys
   end
 
   def log(what)
