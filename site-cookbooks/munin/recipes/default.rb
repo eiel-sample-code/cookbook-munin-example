@@ -32,6 +32,14 @@ template "munin.conf" do
   notifies :reload, 'service[httpd]'
 end
 
+template "munin_conf/localhost.conf" do
+  path "/etc/munin/conf.d/localhost.conf"
+  source "munin_conf/localhost.conf"
+  owner "root"
+  group "root"
+  mode 0644
+end
+
 node[:munin][:users].each do |u|
   htpasswd "/etc/munin/munin-htpasswd" do
     user u[:user]
